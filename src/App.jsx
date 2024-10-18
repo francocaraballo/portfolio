@@ -7,7 +7,7 @@ import {
 function App() {
     return (
 		<div className="bg-slate-900">
-			<div className='max-w-[800px] mx-auto'>
+			<div className='max-w-[900px] mx-auto'>
 				<Navbar />
 				<MainSection />
 				<AboutMeSection />

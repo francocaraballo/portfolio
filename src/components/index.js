@@ -1,4 +1,4 @@
 export * from './AboutMeSection'
 export * from './MainSection'
 export * from './Navbar'
-export * from './ProjectsSection'
+export * from './Projects'

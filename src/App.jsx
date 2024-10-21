@@ -3,6 +3,7 @@ import {
     MainSection,
     AboutMeSection,
     ProjectsSection,
+	Footer,
 } from './components';
 function App() {
     return (
@@ -10,8 +11,9 @@ function App() {
 			<div className='max-w-[900px] mx-auto'>
 				<Navbar />
 				<MainSection />
-				<AboutMeSection />
 				<ProjectsSection />
+				<AboutMeSection />
+				<Footer />
 			</div>
 		</div>
     );

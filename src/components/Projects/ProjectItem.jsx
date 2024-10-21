@@ -22,10 +22,10 @@ export const ProjectItem = ({
                 <h4 className='text-2xl mb-2'>{title}</h4>
                 <div className='mb-4'>
                     <ul className='flex flex-row mb-2 gap-x-2'>
-                        {tags.map((tag) => (
-                            <li>
-                                <span class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}>
-                                    <tag.icon class='size-4' />
+                        {tags.map((tag, index) => (
+                            <li key={index}>
+                                <span className={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}>
+                                    <tag.icon className='size-4' />
                                     {tag.name}
                                 </span>
                             </li>

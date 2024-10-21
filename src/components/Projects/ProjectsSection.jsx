@@ -82,7 +82,7 @@ const PROJECTS = [
 
 export const ProjectsSection = () => {
     return (
-        <section className='text-white'>
+        <section id='projects' className='text-white scroll-mt-12' >
             <div className='flex items-center text-2xl text-white mb-8'>
                 <FaCode />
                 <h3 className='ml-2'>Proyectos</h3>

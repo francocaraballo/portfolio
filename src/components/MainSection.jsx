@@ -5,7 +5,7 @@ import HeroImg from '../assets/img-hero.png';
 
 export const MainSection = () => {
     return (
-        <div className='flex flex-row justify-around items-center gap-12 h-[92vh] w-[100%]'>
+        <div className='flex flex-row justify-around items-center gap-12 h-screen w-full' id='home'>
             <div className='text-white my-auto'>
                 {/* texto */}
                 <h1 className='text-4xl mb-1'>Hola! soy Franco</h1>

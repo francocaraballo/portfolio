@@ -1,13 +1,16 @@
+import { FiGithub } from 'react-icons/fi';
+import { FaExternalLinkAlt } from 'react-icons/fa'
+
 export const ProjectItem = ({
     title,
     img,
     description,
     tags,
-    codeLink,
+    gitLink,
     previewLink,
 }) => {
     return (
-        <div className='flex flex-col lg:flex-row lg:justify-between w-full overflow-hidden'>
+        <article className='flex flex-col lg:flex-row lg:justify-between w-full overflow-hidden'>
             <div className='w-96 h-64 '>
                 <img
                     src={img}
@@ -33,13 +36,13 @@ export const ProjectItem = ({
                     {description}
                 </p>
                 <div className='flex justify-start items-center gap-x-4 px-4 text-lg'>
-                    <a href={codeLink}>
+                    <a href={gitLink} target="_blank">
                         <button className='flex items-center gap-2 px-3 py-2 bg-slate-700 hover:bg-slate-800 rounded'>
                             <FiGithub />
                             <span>Code</span>
                         </button>
                     </a>
-                    <a href={previewLink}>
+                    <a href={previewLink} target="_blank">
                         <button className='flex items-center gap-2 px-3 py-2 bg-slate-700 rounded'>
                             <FaExternalLinkAlt />
                             <span>Preview</span>
@@ -47,6 +50,6 @@ export const ProjectItem = ({
                     </a>
                 </div>
             </div>
-        </div>
+        </article>
     );
 };

@@ -3,7 +3,7 @@ import { VscAccount } from 'react-icons/vsc';
 import AboutMeImg from '../assets/about-me.jpg'
 export const AboutMeSection = () => {
     return (
-        <section id='about-me' className='text-white min-h-screen flex flex-col justify-center scroll-mt-12' >
+        <section id='about-me' className='text-white min-h-screen flex flex-col justify-center -scroll-mt-10' >
             <div className='flex items-center text-2xl mb-8'>
                 <VscAccount />
                 <h3 className='ml-2'>Sobre mi</h3>

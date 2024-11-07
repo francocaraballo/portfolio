@@ -66,8 +66,8 @@ const PROJECTS = [
             'E-commerce destinado a un emprendimiento de ropa deportiva, se implementaron las herramientas de Firebase, como Hosting y Firestore para almacenar los productos',
         img: MiloSport,
         tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.FIREBASE],
-        gitLink: 'https://github.com/francocaraballo/js-coder-3',
-        previewLink: 'https://francocaraballo.github.io/js-coder-3/',
+        gitLink: 'https://github.com/francocaraballo/milo-sport',
+        previewLink: 'https://milosport-7342d.web.app/',
     },
     {
         title: 'SNEAKERS SET - Tienda virtual',
@@ -75,8 +75,8 @@ const PROJECTS = [
             'Aplicación web interactiva creada como parte del curso de JavaScript en Coderhouse. Permite a los usuarios interactuar con una interfaz dinámica que responde a las entradas del usuario. El objetivo del proyecto es demostrar habilidades clave como la manipulación del DOM y el uso de eventos.',
         img: SneakersSet,
         tags: [TAGS.JS, TAGS.CSS, TAGS.HTML],
-        gitLink: 'https://github.com/francocaraballo/js-coder-3',
-        previewLink: 'https://francocaraballo.github.io/js-coder-3/',
+        gitLink: 'https://github.com/francocaraballo/sneakers-set',
+        previewLink: 'https://francocaraballo.github.io/sneakers-set/',
     },
 ];
 

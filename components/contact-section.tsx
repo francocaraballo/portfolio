@@ -25,9 +25,7 @@ export function ContactSection() {
         <SectionHeader number="03" title="Contacto" />
 
         <p className="mt-8 text-muted-foreground leading-relaxed font-light">
-          ¿Tienes un proyecto en mente o simplemente quieres saludar? No dudes
-          en escribirme. Estoy siempre abierto a nuevas oportunidades y
-          conversaciones.
+          ¿Tienes un proyecto en mente y queres hacerlo realidad? Escribime!
         </p>
 
         <form onSubmit={handleSubmit} className="mt-12 flex flex-col gap-6">

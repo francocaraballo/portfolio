@@ -5,7 +5,7 @@
 export const personalInfo = {
   name: "Franco Caraballo",
   subtitle: "Programador Full Stack",
-  phrase: "Transformando ideas en experiencias digitales, una linea de codigo a la vez.",
+  phrase: "Feliz de lo que hago",
   photo: "/images/profile.jpg",
   email: "franconcaraballo@gmail.com",
   github: "https://github.com/francocaraballo",

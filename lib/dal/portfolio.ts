@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase/server"
 
 /**
  * Data Access Layer (DAL) para Portfolio
- * Conecta las consultas a las tablas de Supabase con fallback seguro a portfolio-data.ts
+ * Consultas prioritarias a Supabase con fallback a portfolio-data.ts únicamente cuando la tabla está vacía o si ocurre un error.
  */
 
 export const getPersonalInfo = cache(async (): Promise<PersonalInfo> => {
@@ -21,7 +21,7 @@ export const getPersonalInfo = cache(async (): Promise<PersonalInfo> => {
       name: data.name ?? personalInfo.name,
       subtitle: data.subtitle ?? personalInfo.subtitle,
       phrase: data.phrase ?? personalInfo.phrase,
-      photo: data.photo ?? personalInfo.photo,
+      photo: data.photo || personalInfo.photo,
       email: data.email ?? personalInfo.email,
       github: data.github ?? personalInfo.github,
       linkedin: data.linkedin ?? personalInfo.linkedin,
@@ -35,7 +35,10 @@ export const getPersonalInfo = cache(async (): Promise<PersonalInfo> => {
 export const getProjects = cache(async (): Promise<Project[]> => {
   try {
     const supabase = await createClient()
-    const { data, error } = await supabase.from("projects").select("*").order("id", { ascending: true })
+    const { data, error } = await supabase
+      .from("projects")
+      .select("*")
+      .order("id", { ascending: true })
 
     if (error || !data || data.length === 0) {
       return projects
@@ -48,11 +51,18 @@ export const getProjects = cache(async (): Promise<Project[]> => {
       technologies: Array.isArray(item.technologies)
         ? item.technologies
         : typeof item.technologies === "string"
-        ? JSON.parse(item.technologies)
+        ? (() => {
+            try {
+              const parsed = JSON.parse(item.technologies)
+              return Array.isArray(parsed) ? parsed : [item.technologies]
+            } catch {
+              return item.technologies.split(",").map((t: string) => t.trim()).filter(Boolean)
+            }
+          })()
         : [],
-      preview: item.preview ?? undefined,
-      link: item.link ?? undefined,
-      github: item.github ?? undefined,
+      preview: item.preview || undefined,
+      link: item.link || undefined,
+      github: item.github || undefined,
     }))
   } catch (err) {
     console.error("Error al consultar Supabase (projects), usando fallback local:", err)
@@ -63,7 +73,10 @@ export const getProjects = cache(async (): Promise<Project[]> => {
 export const getCertificates = cache(async (): Promise<Certificate[]> => {
   try {
     const supabase = await createClient()
-    const { data, error } = await supabase.from("certificates").select("*").order("id", { ascending: true })
+    const { data, error } = await supabase
+      .from("certificates")
+      .select("*")
+      .order("id", { ascending: true })
 
     if (error || !data || data.length === 0) {
       return certificates
@@ -75,7 +88,7 @@ export const getCertificates = cache(async (): Promise<Certificate[]> => {
       issuer: item.issuer ?? "",
       date: item.date ?? "",
       credentialId: item.credential_id ?? item.credentialId ?? undefined,
-      link: item.link ?? undefined,
+      link: item.link || undefined,
     }))
   } catch (err) {
     console.error("Error al consultar Supabase (certificates), usando fallback local:", err)
@@ -86,7 +99,10 @@ export const getCertificates = cache(async (): Promise<Certificate[]> => {
 export const getExperiences = cache(async (): Promise<Experience[]> => {
   try {
     const supabase = await createClient()
-    const { data, error } = await supabase.from("experiences").select("*").order("id", { ascending: true })
+    const { data, error } = await supabase
+      .from("experiences")
+      .select("*")
+      .order("id", { ascending: true })
 
     if (error || !data || data.length === 0) {
       return experiences
@@ -108,3 +124,4 @@ export const getExperiences = cache(async (): Promise<Experience[]> => {
 export const getNavLinks = cache(async (): Promise<NavLink[]> => {
   return Promise.resolve(navLinks)
 })
+

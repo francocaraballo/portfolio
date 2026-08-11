@@ -13,6 +13,9 @@ import { CertificatesSection } from "@/components/certificates-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 
+export const revalidate = 0
+export const dynamic = "force-dynamic"
+
 export default async function Home() {
   const [personalInfo, projects, certificates, experiences, navLinks] =
     await Promise.all([
@@ -37,4 +40,5 @@ export default async function Home() {
     </>
   )
 }
+
 

@@ -1,10 +1,15 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { navLinks, personalInfo } from "@/lib/portfolio-data"
+import type { NavLink, PersonalInfo } from "@/types/portfolio"
 import { Menu, X } from "lucide-react"
 
-export function Navbar() {
+interface NavbarProps {
+  navLinks: NavLink[]
+  personalInfo: PersonalInfo
+}
+
+export function Navbar({ navLinks, personalInfo }: NavbarProps) {
   const [activeSection, setActiveSection] = useState("#inicio")
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)

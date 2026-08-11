@@ -1,7 +1,12 @@
-import { navLinks, personalInfo } from "@/lib/portfolio-data"
+import type { NavLink, PersonalInfo } from "@/types/portfolio"
 import { Github, Linkedin, Mail } from "lucide-react"
 
-export function Footer() {
+interface FooterProps {
+  navLinks: NavLink[]
+  personalInfo: PersonalInfo
+}
+
+export function Footer({ navLinks, personalInfo }: FooterProps) {
   const year = new Date().getFullYear()
 
   return (

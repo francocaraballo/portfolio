@@ -1,8 +1,12 @@
 import Image from "next/image"
-import { personalInfo } from "@/lib/portfolio-data"
+import type { PersonalInfo } from "@/types/portfolio"
 import { Github, Linkedin, Mail, ArrowDown } from "lucide-react"
 
-export function HeroSection() {
+interface HeroSectionProps {
+  personalInfo: PersonalInfo
+}
+
+export function HeroSection({ personalInfo }: HeroSectionProps) {
   return (
     <section
       id="inicio"

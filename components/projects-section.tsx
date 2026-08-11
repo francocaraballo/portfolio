@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { projects } from "@/lib/portfolio-data"
+import type { Project } from "@/types/portfolio"
 import { ExternalLink, Github, Eye, X } from "lucide-react"
 
 function PreviewModal({
@@ -49,7 +49,11 @@ function PreviewModal({
   )
 }
 
-export function ProjectsSection() {
+interface ProjectsSectionProps {
+  projects: Project[]
+}
+
+export function ProjectsSection({ projects }: ProjectsSectionProps) {
   const [previewOpen, setPreviewOpen] = useState<number | null>(null)
 
   return (

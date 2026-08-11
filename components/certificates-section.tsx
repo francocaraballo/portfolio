@@ -1,8 +1,12 @@
-import { certificates } from "@/lib/portfolio-data"
+import type { Certificate } from "@/types/portfolio"
 import { SectionHeader } from "./projects-section"
 import { Award, ExternalLink } from "lucide-react"
 
-export function CertificatesSection() {
+interface CertificatesSectionProps {
+  certificates: Certificate[]
+}
+
+export function CertificatesSection({ certificates }: CertificatesSectionProps) {
   return (
     <section id="certificados" className="px-6 py-28 md:py-36">
       <div className="mx-auto max-w-5xl">

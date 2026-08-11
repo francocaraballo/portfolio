@@ -1,8 +1,12 @@
-import { experiences } from "@/lib/portfolio-data"
+import type { Experience } from "@/types/portfolio"
 import { SectionHeader } from "./projects-section"
 import { Briefcase } from "lucide-react"
 
-export function ExperienceSection() {
+interface ExperienceSectionProps {
+  experiences: Experience[]
+}
+
+export function ExperienceSection({ experiences }: ExperienceSectionProps) {
   return (
     <section id="experiencia" className="px-6 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">

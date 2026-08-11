@@ -1,8 +1,8 @@
-// ============================================================
-// PORTFOLIO DATA - Edita este archivo para personalizar tu portfolio
-// ============================================================
+import type { PersonalInfo, Project, Experience, Certificate, NavLink } from "@/types/portfolio"
 
-export const personalInfo = {
+export type { PersonalInfo, Project, Experience, Certificate, NavLink }
+
+export const personalInfo: PersonalInfo = {
   name: "Franco Caraballo",
   subtitle: "Programador Full Stack",
   phrase: "Feliz de lo que hago",
@@ -15,15 +15,6 @@ export const personalInfo = {
 // ============================================================
 // PROYECTOS - Agrega o edita proyectos facilmente aqui
 // ============================================================
-export interface Project {
-  title: string
-  description: string
-  technologies: string[]
-  preview?: string
-  link?: string
-  github?: string
-}
-
 export const projects: Project[] = [
   {
     title: "Landing page personal trainer",
@@ -39,28 +30,11 @@ export const projects: Project[] = [
 // ============================================================
 // EXPERIENCIA LABORAL - Agrega o edita experiencia aqui
 // ============================================================
-export interface Experience {
-  title: string
-  company: string
-  period: string
-  description: string
-}
-
-export const experiences: Experience[] = [
-  
-]
+export const experiences: Experience[] = []
 
 // ============================================================
 // CERTIFICADOS - Agrega o edita certificados aqui
 // ============================================================
-export interface Certificate {
-  title: string
-  issuer: string
-  date: string
-  credentialId?: string
-  link?: string
-}
-
 export const certificates: Certificate[] = [
   {
     title: "AWS Certified Solutions Architect",
@@ -75,15 +49,16 @@ export const certificates: Certificate[] = [
     date: "2024",
     credentialId: "68422197080369d064f4c6b9",
     link: "https://pub.coderhouse.com/legacy-certificates/68422197080369d064f4c6b9",
-  }
+  },
 ]
 
 // ============================================================
 // NAVEGACION
 // ============================================================
-export const navLinks = [
+export const navLinks: NavLink[] = [
   { label: "Inicio", href: "#inicio" },
   { label: "Proyectos", href: "#proyectos" },
   { label: "Certificados", href: "#certificados" },
   { label: "Contacto", href: "#contacto" },
 ]
+

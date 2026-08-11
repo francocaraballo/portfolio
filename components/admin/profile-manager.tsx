@@ -68,18 +68,18 @@ export function ProfileManager({ initialData }: ProfileManagerProps) {
   }
 
   return (
-    <Card className="bg-slate-900/60 border-slate-800 backdrop-blur-xl shadow-xl text-slate-100">
-      <CardHeader className="border-b border-slate-800/80 pb-6">
+    <Card className="bg-card/40 border-border/40 backdrop-blur-xl shadow-xl text-foreground">
+      <CardHeader className="border-b border-border/40 pb-6">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-xl bg-primary/10 border border-primary/20 text-primary">
             <User className="w-5 h-5" />
           </div>
           <div>
-            <CardTitle className="text-xl font-bold text-white flex items-center gap-2">
+            <CardTitle className="font-heading text-xl font-bold text-foreground flex items-center gap-2">
               Gestión de Perfil Personal
-              <Sparkles className="w-4 h-4 text-amber-400" />
+              <Sparkles className="w-4 h-4 text-primary" />
             </CardTitle>
-            <CardDescription className="text-slate-400">
+            <CardDescription className="text-muted-foreground text-sm font-light">
               Actualizá tu información personal, foto de perfil y enlaces de contacto
             </CardDescription>
           </div>
@@ -89,23 +89,23 @@ export function ProfileManager({ initialData }: ProfileManagerProps) {
       <CardContent className="pt-6">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Avatar & Photo Upload Section */}
-          <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 flex flex-col sm:flex-row items-center gap-6">
+          <div className="p-4 rounded-xl bg-background/60 border border-border/40 flex flex-col sm:flex-row items-center gap-6">
             <Avatar className="w-24 h-24 border-2 border-primary/30 shadow-lg shadow-primary/10">
               <AvatarImage src={previewUrl} alt={formData.name} className="object-cover" />
-              <AvatarFallback className="bg-primary/20 text-primary font-bold text-2xl">
+              <AvatarFallback className="bg-primary/20 text-primary font-heading font-bold text-2xl">
                 {formData.name ? formData.name.substring(0, 2).toUpperCase() : "PF"}
               </AvatarFallback>
             </Avatar>
 
             <div className="space-y-2 text-center sm:text-left flex-1">
-              <h4 className="text-sm font-semibold text-white">Foto de Perfil</h4>
-              <p className="text-xs text-slate-400">
+              <h4 className="text-sm font-semibold font-heading text-foreground">Foto de Perfil</h4>
+              <p className="text-xs text-muted-foreground font-light leading-relaxed">
                 Formatos permitidos: PNG, JPG, WebP. Se guardará en Supabase Storage (bucket: portfolio-assets).
               </p>
               <div className="flex items-center gap-3 pt-1 justify-center sm:justify-start">
                 <Label
                   htmlFor="photo-upload"
-                  className="cursor-pointer inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs px-3 py-2 rounded-lg transition-colors border border-slate-700 font-medium"
+                  className="cursor-pointer inline-flex items-center gap-2 bg-card hover:bg-secondary text-foreground text-xs px-3.5 py-2 rounded-lg transition-colors border border-border/40 font-medium"
                 >
                   <Upload className="w-3.5 h-3.5" />
                   Subir Nueva Imagen
@@ -131,7 +131,7 @@ export function ProfileManager({ initialData }: ProfileManagerProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Nombre */}
             <div className="space-y-2">
-              <Label htmlFor="name" className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+              <Label htmlFor="name" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                 Nombre Completo
               </Label>
               <Input
@@ -139,14 +139,14 @@ export function ProfileManager({ initialData }: ProfileManagerProps) {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="Ej: Franco Caraballo"
-                className="bg-slate-950/60 border-slate-800 text-white placeholder:text-slate-600 focus-visible:ring-primary"
+                className="bg-background/80 border-border/50 text-foreground placeholder:text-muted-foreground/40 focus-visible:ring-primary/40 focus-visible:border-primary/60 font-sans"
                 required
               />
             </div>
 
             {/* Subtítulo / Rol */}
             <div className="space-y-2">
-              <Label htmlFor="subtitle" className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+              <Label htmlFor="subtitle" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                 Título / Rol Principal
               </Label>
               <Input
@@ -154,66 +154,66 @@ export function ProfileManager({ initialData }: ProfileManagerProps) {
                 value={formData.subtitle}
                 onChange={(e) => setFormData({ ...formData, subtitle: e.target.value })}
                 placeholder="Ej: Fullstack Developer | React & Node.js Expert"
-                className="bg-slate-950/60 border-slate-800 text-white placeholder:text-slate-600 focus-visible:ring-primary"
+                className="bg-background/80 border-border/50 text-foreground placeholder:text-muted-foreground/40 focus-visible:ring-primary/40 focus-visible:border-primary/60 font-sans"
                 required
               />
             </div>
 
             {/* Email */}
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+              <Label htmlFor="email" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                 Correo Electrónico
               </Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/60" />
                 <Input
                   id="email"
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="contacto@tuportfolio.com"
-                  className="pl-9 bg-slate-950/60 border-slate-800 text-white placeholder:text-slate-600 focus-visible:ring-primary"
+                  className="pl-10 bg-background/80 border-border/50 text-foreground placeholder:text-muted-foreground/40 focus-visible:ring-primary/40 focus-visible:border-primary/60 font-sans"
                 />
               </div>
             </div>
 
             {/* GitHub */}
             <div className="space-y-2">
-              <Label htmlFor="github" className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+              <Label htmlFor="github" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                 Enlace a GitHub
               </Label>
               <div className="relative">
-                <Github className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <Github className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/60" />
                 <Input
                   id="github"
                   value={formData.github}
                   onChange={(e) => setFormData({ ...formData, github: e.target.value })}
                   placeholder="https://github.com/tu-usuario"
-                  className="pl-9 bg-slate-950/60 border-slate-800 text-white placeholder:text-slate-600 focus-visible:ring-primary"
+                  className="pl-10 bg-background/80 border-border/50 text-foreground placeholder:text-muted-foreground/40 focus-visible:ring-primary/40 focus-visible:border-primary/60 font-sans"
                 />
               </div>
             </div>
 
             {/* LinkedIn */}
             <div className="space-y-2 md:col-span-2">
-              <Label htmlFor="linkedin" className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+              <Label htmlFor="linkedin" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                 Enlace a LinkedIn
               </Label>
               <div className="relative">
-                <Linkedin className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <Linkedin className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/60" />
                 <Input
                   id="linkedin"
                   value={formData.linkedin}
                   onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
                   placeholder="https://linkedin.com/in/tu-perfil"
-                  className="pl-9 bg-slate-950/60 border-slate-800 text-white placeholder:text-slate-600 focus-visible:ring-primary"
+                  className="pl-10 bg-background/80 border-border/50 text-foreground placeholder:text-muted-foreground/40 focus-visible:ring-primary/40 focus-visible:border-primary/60 font-sans"
                 />
               </div>
             </div>
 
             {/* Phrase / Bio */}
             <div className="space-y-2 md:col-span-2">
-              <Label htmlFor="phrase" className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+              <Label htmlFor="phrase" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                 Frase Destacada / Bio / Sobre mí
               </Label>
               <Textarea
@@ -222,16 +222,16 @@ export function ProfileManager({ initialData }: ProfileManagerProps) {
                 value={formData.phrase}
                 onChange={(e) => setFormData({ ...formData, phrase: e.target.value })}
                 placeholder="Escribí una frase inspiradora o breve resumen sobre tu pasión por el desarrollo..."
-                className="bg-slate-950/60 border-slate-800 text-white placeholder:text-slate-600 focus-visible:ring-primary resize-none"
+                className="bg-background/80 border-border/50 text-foreground placeholder:text-muted-foreground/40 focus-visible:ring-primary/40 focus-visible:border-primary/60 font-sans resize-none"
               />
             </div>
           </div>
 
-          <div className="flex justify-end pt-4 border-t border-slate-800">
+          <div className="flex justify-end pt-4 border-t border-border/40">
             <Button
               type="submit"
               disabled={isPending}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 shadow-lg shadow-primary/20"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 shadow-lg shadow-primary/20 transition-all duration-300"
             >
               {isPending ? (
                 <>

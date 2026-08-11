@@ -152,15 +152,15 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
   }
 
   return (
-    <Card className="bg-slate-900/60 border-slate-800 backdrop-blur-xl shadow-xl text-slate-100">
-      <CardHeader className="border-b border-slate-800/80 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <Card className="bg-card/40 border-border/40 backdrop-blur-xl shadow-xl text-foreground">
+      <CardHeader className="border-b border-border/40 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-xl bg-primary/10 border border-primary/20 text-primary">
             <FolderKanban className="w-5 h-5" />
           </div>
           <div>
-            <CardTitle className="text-xl font-bold text-white">Gestión de Proyectos</CardTitle>
-            <CardDescription className="text-slate-400">
+            <CardTitle className="font-heading text-xl font-bold text-foreground">Gestión de Proyectos</CardTitle>
+            <CardDescription className="text-muted-foreground text-sm font-light">
               Agregá, editá o eliminá proyectos de tu portfolio
             </CardDescription>
           </div>
@@ -168,7 +168,7 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
 
         <Button
           onClick={openCreateModal}
-          className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg shadow-primary/20"
+          className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg shadow-primary/20 transition-all duration-300"
         >
           <Plus className="w-4 h-4 mr-2" /> Nuevo Proyecto
         </Button>
@@ -177,49 +177,49 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
       <CardContent className="pt-6 space-y-6">
         {/* Search Input */}
         <div className="relative max-w-md">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/60" />
           <Input
             placeholder="Buscar proyectos por nombre o tecnologías..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-9 bg-slate-950/60 border-slate-800 text-white placeholder:text-slate-500 focus-visible:ring-primary"
+            className="pl-10 bg-background/80 border-border/50 text-foreground placeholder:text-muted-foreground/40 focus-visible:ring-primary/40 focus-visible:border-primary/60 font-sans"
           />
         </div>
 
         {/* Projects List / Grid */}
         {filteredProjects.length === 0 ? (
-          <div className="text-center py-12 border border-dashed border-slate-800 rounded-xl bg-slate-950/30">
-            <FolderKanban className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-            <p className="text-slate-400 font-medium">No se encontraron proyectos.</p>
-            <p className="text-xs text-slate-500 mt-1">Intentá cambiar tu búsqueda o agregá uno nuevo.</p>
+          <div className="text-center py-12 border border-dashed border-border/40 rounded-xl bg-background/40">
+            <FolderKanban className="w-12 h-12 text-muted-foreground/40 mx-auto mb-3" />
+            <p className="text-muted-foreground font-medium text-sm">No se encontraron proyectos.</p>
+            <p className="text-xs text-muted-foreground/70 mt-1 font-light">Intentá cambiar tu búsqueda o agregá uno nuevo.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {filteredProjects.map((project, idx) => (
               <div
                 key={project.id || idx}
-                className="bg-slate-950/60 border border-slate-800/80 rounded-xl overflow-hidden hover:border-slate-700 transition-all flex flex-col justify-between group"
+                className="bg-background/60 border border-border/40 rounded-xl overflow-hidden hover:border-border/80 transition-all duration-300 flex flex-col justify-between group shadow-sm hover:shadow-lg hover:shadow-primary/5"
               >
                 <div>
                   {/* Image Preview */}
-                  <div className="h-40 w-full bg-slate-900 relative overflow-hidden flex items-center justify-center border-b border-slate-800">
+                  <div className="h-40 w-full bg-card/60 relative overflow-hidden flex items-center justify-center border-b border-border/40">
                     {project.preview ? (
                       <img
                         src={project.preview}
                         alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     ) : (
-                      <div className="flex flex-col items-center text-slate-600">
+                      <div className="flex flex-col items-center text-muted-foreground/50">
                         <ImageIcon className="w-8 h-8 mb-1" />
-                        <span className="text-xs">Sin imagen</span>
+                        <span className="text-xs font-light">Sin imagen</span>
                       </div>
                     )}
                   </div>
 
                   <div className="p-4 space-y-3">
-                    <h3 className="font-bold text-white text-base line-clamp-1">{project.title}</h3>
-                    <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                    <h3 className="font-heading font-bold text-foreground text-base line-clamp-1">{project.title}</h3>
+                    <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed font-light">
                       {project.description}
                     </p>
 
@@ -229,13 +229,13 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
                         <Badge
                           key={tIdx}
                           variant="secondary"
-                          className="bg-slate-800/80 text-slate-300 text-[10px] border border-slate-700/50"
+                          className="bg-secondary/60 text-secondary-foreground text-[10px] border border-border/30 font-mono"
                         >
                           {tech}
                         </Badge>
                       ))}
                       {project.technologies.length > 4 && (
-                        <Badge variant="outline" className="text-[10px] text-slate-500 border-slate-800">
+                        <Badge variant="outline" className="text-[10px] text-muted-foreground border-border/40 font-mono">
                           +{project.technologies.length - 4}
                         </Badge>
                       )}
@@ -244,14 +244,14 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
                 </div>
 
                 {/* Card Footer Actions */}
-                <div className="p-3 border-t border-slate-800/60 bg-slate-900/40 flex items-center justify-between">
+                <div className="p-3 border-t border-border/40 bg-card/20 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     {project.link && (
                       <a
                         href={project.link}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-slate-400 hover:text-primary transition-colors p-1"
+                        className="text-muted-foreground hover:text-primary transition-colors p-1"
                         title="Ver demo"
                       >
                         <ExternalLink className="w-4 h-4" />
@@ -262,7 +262,7 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
                         href={project.github}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-slate-400 hover:text-primary transition-colors p-1"
+                        className="text-muted-foreground hover:text-primary transition-colors p-1"
                         title="Ver código GitHub"
                       >
                         <Github className="w-4 h-4" />
@@ -275,7 +275,7 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
                       variant="ghost"
                       size="sm"
                       onClick={() => openEditModal(project)}
-                      className="h-8 w-8 p-0 text-slate-400 hover:text-white hover:bg-slate-800"
+                      className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-card"
                     >
                       <Edit2 className="w-3.5 h-3.5" />
                     </Button>
@@ -283,7 +283,7 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
                       variant="ghost"
                       size="sm"
                       onClick={() => setDeletingId(project.id || null)}
-                      className="h-8 w-8 p-0 text-slate-400 hover:text-red-400 hover:bg-red-950/30"
+                      className="h-8 w-8 p-0 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </Button>
@@ -297,19 +297,19 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
 
       {/* Modal Dialog for Create/Edit Project */}
       <Dialog open={isOpenModal} onOpenChange={setIsOpenModal}>
-        <DialogContent className="bg-slate-900 border-slate-800 text-slate-100 max-w-xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="bg-card/95 border-border/40 backdrop-blur-2xl text-foreground max-w-xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-lg font-bold text-white">
+            <DialogTitle className="font-heading text-lg font-bold text-foreground">
               {editingProject ? "Editar Proyecto" : "Crear Nuevo Proyecto"}
             </DialogTitle>
-            <DialogDescription className="text-slate-400 text-xs">
+            <DialogDescription className="text-muted-foreground text-xs font-light">
               Completá los campos requeridos para publicar el proyecto en el portfolio.
             </DialogDescription>
           </DialogHeader>
 
           <form onSubmit={handleSave} className="space-y-4 pt-2">
             <div className="space-y-2">
-              <Label htmlFor="proj-title" className="text-xs font-semibold text-slate-300">
+              <Label htmlFor="proj-title" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                 Título del Proyecto *
               </Label>
               <Input
@@ -317,13 +317,13 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Ej: E-commerce SaaS"
-                className="bg-slate-950 border-slate-800 text-white"
+                className="bg-background/80 border-border/50 text-foreground font-sans"
                 required
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="proj-desc" className="text-xs font-semibold text-slate-300">
+              <Label htmlFor="proj-desc" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                 Descripción *
               </Label>
               <Textarea
@@ -332,13 +332,13 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Explicación clara del proyecto, problemas que resuelve y arquitectura..."
-                className="bg-slate-950 border-slate-800 text-white resize-none"
+                className="bg-background/80 border-border/50 text-foreground font-sans resize-none"
                 required
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="proj-tech" className="text-xs font-semibold text-slate-300">
+              <Label htmlFor="proj-tech" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                 Tecnologías (separadas por coma)
               </Label>
               <Input
@@ -346,13 +346,13 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
                 value={technologies}
                 onChange={(e) => setTechnologies(e.target.value)}
                 placeholder="Ej: React, Next.js, Tailwind CSS, Supabase"
-                className="bg-slate-950 border-slate-800 text-white"
+                className="bg-background/80 border-border/50 text-foreground font-sans"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="proj-link" className="text-xs font-semibold text-slate-300">
+                <Label htmlFor="proj-link" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                   Enlace Demo / Deploy
                 </Label>
                 <Input
@@ -360,12 +360,12 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
                   value={link}
                   onChange={(e) => setLink(e.target.value)}
                   placeholder="https://midemo.com"
-                  className="bg-slate-950 border-slate-800 text-white"
+                  className="bg-background/80 border-border/50 text-foreground font-sans"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="proj-github" className="text-xs font-semibold text-slate-300">
+                <Label htmlFor="proj-github" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                   Enlace Repositorio GitHub
                 </Label>
                 <Input
@@ -373,27 +373,27 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
                   value={github}
                   onChange={(e) => setGithub(e.target.value)}
                   placeholder="https://github.com/usuario/repo"
-                  className="bg-slate-950 border-slate-800 text-white"
+                  className="bg-background/80 border-border/50 text-foreground font-sans"
                 />
               </div>
             </div>
 
             {/* Image Preview & Upload */}
             <div className="space-y-2 pt-2">
-              <Label className="text-xs font-semibold text-slate-300">Imagen de Portada (Preview)</Label>
-              <div className="flex items-center gap-4 p-3 rounded-lg bg-slate-950 border border-slate-800">
-                <div className="w-20 h-14 bg-slate-900 rounded border border-slate-800 overflow-hidden flex items-center justify-center">
+              <Label className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">Imagen de Portada (Preview)</Label>
+              <div className="flex items-center gap-4 p-3 rounded-lg bg-background/80 border border-border/50">
+                <div className="w-20 h-14 bg-card rounded border border-border/40 overflow-hidden flex items-center justify-center">
                   {filePreviewLocal ? (
                     <img src={filePreviewLocal} alt="Preview" className="w-full h-full object-cover" />
                   ) : (
-                    <ImageIcon className="w-6 h-6 text-slate-600" />
+                    <ImageIcon className="w-6 h-6 text-muted-foreground/50" />
                   )}
                 </div>
 
                 <div className="flex-1 space-y-1">
                   <Label
                     htmlFor="proj-file"
-                    className="cursor-pointer inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white text-xs px-3 py-1.5 rounded transition-colors"
+                    className="cursor-pointer inline-flex items-center gap-2 bg-card hover:bg-secondary text-foreground text-xs px-3 py-1.5 rounded transition-colors border border-border/40 font-medium"
                   >
                     <Upload className="w-3.5 h-3.5" /> Subir Imagen
                   </Label>
@@ -413,12 +413,12 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
               </div>
             </div>
 
-            <DialogFooter className="pt-4 border-t border-slate-800">
+            <DialogFooter className="pt-4 border-t border-border/40">
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => setIsOpenModal(false)}
-                className="border-slate-800 bg-slate-900 text-slate-300 hover:bg-slate-800"
+                className="border-border/40 bg-background text-muted-foreground hover:bg-card hover:text-foreground text-xs uppercase tracking-wider font-medium"
               >
                 Cancelar
               </Button>
@@ -438,20 +438,20 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
 
       {/* Alert Dialog for Confirming Delete */}
       <AlertDialog open={deletingId !== null} onOpenChange={(open) => !open && setDeletingId(null)}>
-        <AlertDialogContent className="bg-slate-900 border-slate-800 text-slate-100">
+        <AlertDialogContent className="bg-card/95 border-border/40 backdrop-blur-2xl text-foreground">
           <AlertDialogHeader>
-            <AlertDialogTitle className="text-white">¿Estás seguro de eliminar este proyecto?</AlertDialogTitle>
-            <AlertDialogDescription className="text-slate-400">
+            <AlertDialogTitle className="font-heading text-foreground">¿Estás seguro de eliminar este proyecto?</AlertDialogTitle>
+            <AlertDialogDescription className="text-muted-foreground text-xs font-light">
               Esta acción no se puede deshacer. El proyecto será eliminado permanentemente de la base de datos.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="border-slate-800 bg-slate-900 text-slate-300 hover:bg-slate-800">
+            <AlertDialogCancel className="border-border/40 bg-background text-muted-foreground hover:bg-card hover:text-foreground text-xs uppercase tracking-wider font-medium">
               Cancelar
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteConfirm}
-              className="bg-red-600 hover:bg-red-700 text-white font-semibold"
+              className="bg-destructive hover:bg-destructive/90 text-destructive-foreground font-semibold"
             >
               {isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : "Eliminar"}
             </AlertDialogAction>

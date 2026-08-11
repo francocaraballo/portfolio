@@ -142,31 +142,31 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 p-4 relative overflow-hidden">
-      {/* Glow shapes */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+    <div className="min-h-screen w-full flex items-center justify-center bg-background p-4 relative overflow-hidden font-sans">
+      {/* Ambient background glow — aligned with hero section */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/4" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/4" />
 
       {/* Back to site link */}
-      <div className="absolute top-6 left-6">
+      <div className="absolute top-6 left-6 z-10">
         <Link
           href="/"
-          className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors bg-slate-900/60 backdrop-blur-md border border-slate-800 px-3 py-1.5 rounded-full"
+          className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground hover:text-foreground transition-all duration-300 bg-card/40 backdrop-blur-2xl border border-border/40 px-4 py-2 rounded-full hover:border-border/80 hover:bg-card/70"
         >
-          <ArrowLeft className="w-4 h-4" /> Volver al sitio principal
+          <ArrowLeft className="w-3.5 h-3.5" /> Volver al sitio principal
         </Link>
       </div>
 
-      <Card className="w-full max-w-md bg-slate-900/80 backdrop-blur-xl border-slate-800 shadow-2xl shadow-primary/5 text-slate-100">
-        <CardHeader className="space-y-3 text-center pb-6 border-b border-slate-800/80">
+      <Card className="w-full max-w-md bg-card/60 backdrop-blur-2xl border-border/40 shadow-2xl shadow-background/80 text-foreground animate-fade-up">
+        <CardHeader className="space-y-3 text-center pb-6 border-b border-border/40">
           <div className="mx-auto w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shadow-inner">
             <ShieldCheck className="w-6 h-6" />
           </div>
           <div>
-            <CardTitle className="text-2xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">
+            <CardTitle className="font-heading text-2xl md:text-3xl font-extrabold text-foreground tracking-tight">
               Panel de Administración
             </CardTitle>
-            <CardDescription className="text-slate-400 text-sm mt-1">
+            <CardDescription className="text-muted-foreground text-sm font-light mt-1.5">
               Ingresá tus credenciales para administrar el Portfolio
             </CardDescription>
           </div>
@@ -177,17 +177,17 @@ export default function AdminLoginPage() {
             {errorState && (
               <Alert
                 variant="destructive"
-                className="bg-red-950/40 border-red-900/60 text-red-200 backdrop-blur-sm shadow-md"
+                className="bg-destructive/10 border-destructive/30 text-destructive-foreground backdrop-blur-sm shadow-md"
               >
-                <AlertCircle className="w-5 h-5 text-red-400 mt-0.5 shrink-0" />
+                <AlertCircle className="w-5 h-5 text-destructive mt-0.5 shrink-0" />
                 <div>
-                  <AlertTitle className="font-semibold text-red-200 text-sm">
+                  <AlertTitle className="font-semibold text-sm">
                     {errorState.title}
                   </AlertTitle>
-                  <AlertDescription className="text-red-300/90 text-xs mt-1 leading-relaxed">
+                  <AlertDescription className="text-muted-foreground text-xs mt-1 leading-relaxed">
                     {errorState.description}
                     {errorState.code && (
-                      <span className="block mt-1.5 font-mono text-[11px] text-red-400/80 bg-red-950/60 px-2 py-0.5 rounded border border-red-900/40 w-fit">
+                      <span className="block mt-1.5 font-mono text-[11px] text-destructive/90 bg-destructive/20 px-2 py-0.5 rounded border border-destructive/30 w-fit">
                         Código Supabase: {errorState.code} {errorState.status ? `(Status HTTP ${errorState.status})` : ""}
                       </span>
                     )}
@@ -197,18 +197,18 @@ export default function AdminLoginPage() {
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-slate-300 text-xs font-semibold uppercase tracking-wider">
+              <Label htmlFor="email" className="text-muted-foreground text-[11px] font-medium uppercase tracking-[0.15em]">
                 Correo Electrónico
               </Label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/60" />
                 <Input
                   id="email"
                   type="email"
                   placeholder="admin@tuportfolio.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="pl-9 bg-slate-950/60 border-slate-800 text-slate-100 placeholder:text-slate-600 focus-visible:ring-primary focus-visible:border-primary"
+                  className="pl-10 bg-background/80 border-border/50 text-foreground placeholder:text-muted-foreground/40 focus-visible:ring-primary/40 focus-visible:border-primary/60 font-sans transition-all duration-300"
                   required
                   disabled={isLoading}
                 />
@@ -216,18 +216,18 @@ export default function AdminLoginPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-slate-300 text-xs font-semibold uppercase tracking-wider">
+              <Label htmlFor="password" className="text-muted-foreground text-[11px] font-medium uppercase tracking-[0.15em]">
                 Contraseña
               </Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/60" />
                 <Input
                   id="password"
                   type="password"
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-9 bg-slate-950/60 border-slate-800 text-slate-100 placeholder:text-slate-600 focus-visible:ring-primary focus-visible:border-primary"
+                  className="pl-10 bg-background/80 border-border/50 text-foreground placeholder:text-muted-foreground/40 focus-visible:ring-primary/40 focus-visible:border-primary/60 font-sans transition-all duration-300"
                   required
                   disabled={isLoading}
                 />
@@ -238,7 +238,7 @@ export default function AdminLoginPage() {
           <CardFooter className="pt-4 pb-6 flex flex-col space-y-4">
             <Button
               type="submit"
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg shadow-primary/25 transition-all group"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg shadow-primary/20 transition-all duration-300 group"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -248,7 +248,7 @@ export default function AdminLoginPage() {
               ) : (
                 <>
                   Ingresar al Dashboard
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                 </>
               )}
             </Button>

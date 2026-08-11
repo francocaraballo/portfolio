@@ -23,72 +23,72 @@ export function AdminDashboard({
   certificates,
 }: AdminDashboardProps) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-fade-in">
       {/* Top Banner & Quick Metrics */}
       <div className="space-y-4">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-slate-800 shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 sm:p-8 rounded-2xl bg-card/60 border border-border/40 backdrop-blur-2xl shadow-xl relative overflow-hidden animate-fade-up">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-primary/[0.05] rounded-full blur-3xl pointer-events-none" />
           
-          <div className="space-y-1 relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold">
-              <Sparkles className="w-3.5 h-3.5" /> FASE 3: Panel de Control Activo
+          <div className="space-y-2 relative z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[11px] font-medium tracking-[0.2em] uppercase">
+              <Sparkles className="w-3.5 h-3.5" /> Panel de Control Activo
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight">
               Bienvenido, {personalInfo.name || "Administrador"}
             </h2>
-            <p className="text-sm text-slate-400">
-              Gestioná todos los contenidos del portfolio en tiempo real con Supabase Auth & Storage.
+            <p className="text-sm text-muted-foreground font-light max-w-2xl leading-relaxed">
+              Gestioná todos los contenidos de tu portfolio profesional en tiempo real con Supabase Auth & Storage.
             </p>
           </div>
         </div>
 
         {/* Quick Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card className="bg-slate-900/40 border-slate-800 backdrop-blur-md">
-            <CardContent className="p-4 flex items-center justify-between">
+          <Card className="bg-card/40 border-border/40 backdrop-blur-xl hover:border-border/70 hover:bg-card/60 transition-all duration-300 group">
+            <CardContent className="p-5 flex items-center justify-between">
               <div>
-                <p className="text-xs text-slate-400 font-medium">Proyectos Totales</p>
-                <h3 className="text-2xl font-bold text-white mt-1">{projects.length}</h3>
+                <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wider">Proyectos Totales</p>
+                <h3 className="font-heading text-3xl font-extrabold text-foreground mt-1 group-hover:text-primary transition-colors">{projects.length}</h3>
               </div>
-              <div className="p-3 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <div className="p-3.5 rounded-xl bg-primary/10 text-primary border border-primary/20 group-hover:scale-105 transition-transform">
                 <FolderKanban className="w-5 h-5" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/40 border-slate-800 backdrop-blur-md">
-            <CardContent className="p-4 flex items-center justify-between">
+          <Card className="bg-card/40 border-border/40 backdrop-blur-xl hover:border-border/70 hover:bg-card/60 transition-all duration-300 group">
+            <CardContent className="p-5 flex items-center justify-between">
               <div>
-                <p className="text-xs text-slate-400 font-medium">Experiencias</p>
-                <h3 className="text-2xl font-bold text-white mt-1">{experiences.length}</h3>
+                <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wider">Experiencias</p>
+                <h3 className="font-heading text-3xl font-extrabold text-foreground mt-1 group-hover:text-primary transition-colors">{experiences.length}</h3>
               </div>
-              <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <div className="p-3.5 rounded-xl bg-primary/10 text-primary border border-primary/20 group-hover:scale-105 transition-transform">
                 <Briefcase className="w-5 h-5" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/40 border-slate-800 backdrop-blur-md">
-            <CardContent className="p-4 flex items-center justify-between">
+          <Card className="bg-card/40 border-border/40 backdrop-blur-xl hover:border-border/70 hover:bg-card/60 transition-all duration-300 group">
+            <CardContent className="p-5 flex items-center justify-between">
               <div>
-                <p className="text-xs text-slate-400 font-medium">Certificados</p>
-                <h3 className="text-2xl font-bold text-white mt-1">{certificates.length}</h3>
+                <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wider">Certificados</p>
+                <h3 className="font-heading text-3xl font-extrabold text-foreground mt-1 group-hover:text-primary transition-colors">{certificates.length}</h3>
               </div>
-              <div className="p-3 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
+              <div className="p-3.5 rounded-xl bg-primary/10 text-primary border border-primary/20 group-hover:scale-105 transition-transform">
                 <Award className="w-5 h-5" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-slate-900/40 border-slate-800 backdrop-blur-md">
-            <CardContent className="p-4 flex items-center justify-between">
+          <Card className="bg-card/40 border-border/40 backdrop-blur-xl hover:border-border/70 hover:bg-card/60 transition-all duration-300 group">
+            <CardContent className="p-5 flex items-center justify-between">
               <div>
-                <p className="text-xs text-slate-400 font-medium">Estado Perfil</p>
-                <h3 className="text-sm font-bold text-emerald-400 mt-1 flex items-center gap-1.5">
+                <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wider">Estado Perfil</p>
+                <h3 className="text-xs font-semibold text-emerald-400 mt-2 flex items-center gap-1.5 uppercase tracking-wide">
                   <CheckCircle2 className="w-4 h-4" /> Configurado
                 </h3>
               </div>
-              <div className="p-3 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              <div className="p-3.5 rounded-xl bg-primary/10 text-primary border border-primary/20 group-hover:scale-105 transition-transform">
                 <User className="w-5 h-5" />
               </div>
             </CardContent>
@@ -98,46 +98,46 @@ export function AdminDashboard({
 
       {/* Tabs Navigation */}
       <Tabs defaultValue="perfil" className="w-full space-y-6">
-        <TabsList className="bg-slate-900/80 border border-slate-800 p-1 rounded-xl w-full grid grid-cols-2 md:grid-cols-4 h-auto">
+        <TabsList className="bg-card/40 border border-border/40 p-1.5 rounded-xl w-full grid grid-cols-2 md:grid-cols-4 h-auto backdrop-blur-md">
           <TabsTrigger
             value="perfil"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2 transition-all"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-heading text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 shadow-md shadow-primary/10 data-[state=inactive]:text-muted-foreground hover:data-[state=inactive]:text-foreground"
           >
             <User className="w-4 h-4" /> Perfil
           </TabsTrigger>
           <TabsTrigger
             value="proyectos"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2 transition-all"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-heading text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 shadow-md shadow-primary/10 data-[state=inactive]:text-muted-foreground hover:data-[state=inactive]:text-foreground"
           >
             <FolderKanban className="w-4 h-4" /> Proyectos ({projects.length})
           </TabsTrigger>
           <TabsTrigger
             value="experiencia"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2 transition-all"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-heading text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 shadow-md shadow-primary/10 data-[state=inactive]:text-muted-foreground hover:data-[state=inactive]:text-foreground"
           >
             <Briefcase className="w-4 h-4" /> Experiencia ({experiences.length})
           </TabsTrigger>
           <TabsTrigger
             value="certificados"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2 transition-all"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-heading text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 shadow-md shadow-primary/10 data-[state=inactive]:text-muted-foreground hover:data-[state=inactive]:text-foreground"
           >
             <Award className="w-4 h-4" /> Certificados ({certificates.length})
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="perfil" className="focus-visible:outline-none">
+        <TabsContent value="perfil" className="focus-visible:outline-none animate-fade-in">
           <ProfileManager initialData={personalInfo} />
         </TabsContent>
 
-        <TabsContent value="proyectos" className="focus-visible:outline-none">
+        <TabsContent value="proyectos" className="focus-visible:outline-none animate-fade-in">
           <ProjectsManager initialData={projects} />
         </TabsContent>
 
-        <TabsContent value="experiencia" className="focus-visible:outline-none">
+        <TabsContent value="experiencia" className="focus-visible:outline-none animate-fade-in">
           <ExperiencesManager initialData={experiences} />
         </TabsContent>
 
-        <TabsContent value="certificados" className="focus-visible:outline-none">
+        <TabsContent value="certificados" className="focus-visible:outline-none animate-fade-in">
           <CertificatesManager initialData={certificates} />
         </TabsContent>
       </Tabs>

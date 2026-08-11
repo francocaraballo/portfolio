@@ -118,15 +118,15 @@ export function CertificatesManager({ initialData }: CertificatesManagerProps) {
   }
 
   return (
-    <Card className="bg-slate-900/60 border-slate-800 backdrop-blur-xl shadow-xl text-slate-100">
-      <CardHeader className="border-b border-slate-800/80 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <Card className="bg-card/40 border-border/40 backdrop-blur-xl shadow-xl text-foreground">
+      <CardHeader className="border-b border-border/40 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-xl bg-primary/10 border border-primary/20 text-primary">
             <Award className="w-5 h-5" />
           </div>
           <div>
-            <CardTitle className="text-xl font-bold text-white">Gestión de Certificados</CardTitle>
-            <CardDescription className="text-slate-400">
+            <CardTitle className="font-heading text-xl font-bold text-foreground">Gestión de Certificados</CardTitle>
+            <CardDescription className="text-muted-foreground text-sm font-light">
               Administrá tus certificaciones, cursos y credenciales verificables
             </CardDescription>
           </div>
@@ -134,7 +134,7 @@ export function CertificatesManager({ initialData }: CertificatesManagerProps) {
 
         <Button
           onClick={openCreateModal}
-          className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg shadow-primary/20"
+          className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-lg shadow-primary/20 transition-all duration-300"
         >
           <Plus className="w-4 h-4 mr-2" /> Agregar Certificado
         </Button>
@@ -142,27 +142,27 @@ export function CertificatesManager({ initialData }: CertificatesManagerProps) {
 
       <CardContent className="pt-6">
         {certificates.length === 0 ? (
-          <div className="text-center py-12 border border-dashed border-slate-800 rounded-xl bg-slate-950/30">
-            <Award className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-            <p className="text-slate-400 font-medium">No tenés certificados registrados.</p>
-            <p className="text-xs text-slate-500 mt-1">Hacé clic en "Agregar Certificado" para publicar la primera credencial.</p>
+          <div className="text-center py-12 border border-dashed border-border/40 rounded-xl bg-background/40">
+            <Award className="w-12 h-12 text-muted-foreground/40 mx-auto mb-3" />
+            <p className="text-muted-foreground font-medium text-sm">No tenés certificados registrados.</p>
+            <p className="text-xs text-muted-foreground/70 mt-1 font-light">Hacé clic en "Agregar Certificado" para publicar la primera credencial.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {certificates.map((cert, idx) => (
               <div
                 key={cert.id || idx}
-                className="p-5 rounded-xl bg-slate-950/60 border border-slate-800/80 hover:border-slate-700 transition-all flex flex-col justify-between space-y-4 group"
+                className="p-5 rounded-xl bg-background/60 border border-border/40 hover:border-border/80 transition-all duration-300 flex flex-col justify-between space-y-4 group shadow-sm hover:shadow-lg hover:shadow-primary/5"
               >
                 <div className="space-y-2">
                   <div className="flex items-start justify-between gap-2">
-                    <h3 className="font-bold text-white text-base leading-snug">{cert.title}</h3>
+                    <h3 className="font-heading font-bold text-foreground text-base leading-snug">{cert.title}</h3>
                     <div className="flex items-center gap-1 shrink-0">
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => openEditModal(cert)}
-                        className="h-8 w-8 p-0 text-slate-400 hover:text-white hover:bg-slate-800"
+                        className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-card"
                       >
                         <Edit2 className="w-3.5 h-3.5" />
                       </Button>
@@ -170,37 +170,37 @@ export function CertificatesManager({ initialData }: CertificatesManagerProps) {
                         variant="ghost"
                         size="sm"
                         onClick={() => setDeletingId(cert.id || null)}
-                        className="h-8 w-8 p-0 text-slate-400 hover:text-red-400 hover:bg-red-950/30"
+                        className="h-8 w-8 p-0 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </Button>
                     </div>
                   </div>
 
-                  <p className="text-sm font-medium text-primary flex items-center gap-1.5">
+                  <p className="text-sm font-medium text-primary flex items-center gap-1.5 font-sans">
                     <ShieldCheck className="w-4 h-4 text-emerald-400" />
                     Emisor: {cert.issuer}
                   </p>
 
-                  <p className="text-xs text-slate-400 flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-slate-500" />
+                  <p className="text-xs text-muted-foreground flex items-center gap-1.5 font-light">
+                    <Calendar className="w-3.5 h-3.5 text-muted-foreground/60" />
                     Fecha: {cert.date}
                   </p>
 
                   {cert.credentialId && (
-                    <p className="text-xs text-slate-500 font-mono">
-                      ID: <span className="text-slate-300">{cert.credentialId}</span>
+                    <p className="text-xs text-muted-foreground font-mono">
+                      ID: <span className="text-foreground">{cert.credentialId}</span>
                     </p>
                   )}
                 </div>
 
                 {cert.link && (
-                  <div className="pt-2 border-t border-slate-800/60">
+                  <div className="pt-2 border-t border-border/40">
                     <a
                       href={cert.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-xs font-semibold text-primary hover:underline flex items-center gap-1.5"
+                      className="text-xs font-medium text-primary hover:underline flex items-center gap-1.5"
                     >
                       Ver credencial verificable <ExternalLink className="w-3.5 h-3.5" />
                     </a>
@@ -214,19 +214,19 @@ export function CertificatesManager({ initialData }: CertificatesManagerProps) {
 
       {/* Modal Dialog Create/Edit */}
       <Dialog open={isOpenModal} onOpenChange={setIsOpenModal}>
-        <DialogContent className="bg-slate-900 border-slate-800 text-slate-100 max-w-lg">
+        <DialogContent className="bg-card/95 border-border/40 backdrop-blur-2xl text-foreground max-w-lg">
           <DialogHeader>
-            <DialogTitle className="text-lg font-bold text-white">
+            <DialogTitle className="font-heading text-lg font-bold text-foreground">
               {editingCert ? "Editar Certificado" : "Agregar Certificado"}
             </DialogTitle>
-            <DialogDescription className="text-slate-400 text-xs">
+            <DialogDescription className="text-muted-foreground text-xs font-light">
               Completá los datos de la certificación o credencial.
             </DialogDescription>
           </DialogHeader>
 
           <form onSubmit={handleSave} className="space-y-4 pt-2">
             <div className="space-y-2">
-              <Label htmlFor="cert-title" className="text-xs font-semibold text-slate-300">
+              <Label htmlFor="cert-title" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                 Título del Certificado *
               </Label>
               <Input
@@ -234,14 +234,14 @@ export function CertificatesManager({ initialData }: CertificatesManagerProps) {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Ej: AWS Certified Solutions Architect"
-                className="bg-slate-950 border-slate-800 text-white"
+                className="bg-background/80 border-border/50 text-foreground font-sans"
                 required
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="cert-issuer" className="text-xs font-semibold text-slate-300">
+                <Label htmlFor="cert-issuer" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                   Emisor / Institución *
                 </Label>
                 <Input
@@ -249,13 +249,13 @@ export function CertificatesManager({ initialData }: CertificatesManagerProps) {
                   value={issuer}
                   onChange={(e) => setIssuer(e.target.value)}
                   placeholder="Ej: Amazon Web Services"
-                  className="bg-slate-950 border-slate-800 text-white"
+                  className="bg-background/80 border-border/50 text-foreground font-sans"
                   required
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="cert-date" className="text-xs font-semibold text-slate-300">
+                <Label htmlFor="cert-date" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                   Fecha de Emisión *
                 </Label>
                 <Input
@@ -263,14 +263,14 @@ export function CertificatesManager({ initialData }: CertificatesManagerProps) {
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
                   placeholder="Ej: Noviembre 2024"
-                  className="bg-slate-950 border-slate-800 text-white"
+                  className="bg-background/80 border-border/50 text-foreground font-sans"
                   required
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="cert-cred" className="text-xs font-semibold text-slate-300">
+              <Label htmlFor="cert-cred" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                 ID de Credencial (Opcional)
               </Label>
               <Input
@@ -278,12 +278,12 @@ export function CertificatesManager({ initialData }: CertificatesManagerProps) {
                 value={credentialId}
                 onChange={(e) => setCredentialId(e.target.value)}
                 placeholder="Ej: AWS-894120593"
-                className="bg-slate-950 border-slate-800 text-white"
+                className="bg-background/80 border-border/50 text-foreground font-sans"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="cert-link" className="text-xs font-semibold text-slate-300">
+              <Label htmlFor="cert-link" className="text-[11px] font-medium text-muted-foreground uppercase tracking-[0.15em]">
                 Enlace a la Credencial (Opcional)
               </Label>
               <Input
@@ -291,16 +291,16 @@ export function CertificatesManager({ initialData }: CertificatesManagerProps) {
                 value={link}
                 onChange={(e) => setLink(e.target.value)}
                 placeholder="https://credly.com/your-badge"
-                className="bg-slate-950 border-slate-800 text-white"
+                className="bg-background/80 border-border/50 text-foreground font-sans"
               />
             </div>
 
-            <DialogFooter className="pt-4 border-t border-slate-800">
+            <DialogFooter className="pt-4 border-t border-border/40">
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => setIsOpenModal(false)}
-                className="border-slate-800 bg-slate-900 text-slate-300 hover:bg-slate-800"
+                className="border-border/40 bg-background text-muted-foreground hover:bg-card hover:text-foreground text-xs uppercase tracking-wider font-medium"
               >
                 Cancelar
               </Button>
@@ -314,20 +314,20 @@ export function CertificatesManager({ initialData }: CertificatesManagerProps) {
 
       {/* Confirmation Dialog Delete */}
       <AlertDialog open={deletingId !== null} onOpenChange={(open) => !open && setDeletingId(null)}>
-        <AlertDialogContent className="bg-slate-900 border-slate-800 text-slate-100">
+        <AlertDialogContent className="bg-card/95 border-border/40 backdrop-blur-2xl text-foreground">
           <AlertDialogHeader>
-            <AlertDialogTitle className="text-white">¿Eliminar este certificado?</AlertDialogTitle>
-            <AlertDialogDescription className="text-slate-400">
+            <AlertDialogTitle className="font-heading text-foreground">¿Eliminar este certificado?</AlertDialogTitle>
+            <AlertDialogDescription className="text-muted-foreground text-xs font-light">
               Esta credencial será eliminada permanentemente del portfolio.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="border-slate-800 bg-slate-900 text-slate-300 hover:bg-slate-800">
+            <AlertDialogCancel className="border-border/40 bg-background text-muted-foreground hover:bg-card hover:text-foreground text-xs uppercase tracking-wider font-medium">
               Cancelar
             </AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteConfirm}
-              className="bg-red-600 hover:bg-red-700 text-white font-semibold"
+              className="bg-destructive hover:bg-destructive/90 text-destructive-foreground font-semibold"
             >
               {isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : "Eliminar"}
             </AlertDialogAction>

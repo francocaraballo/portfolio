@@ -7,6 +7,7 @@ import { ProfileManager } from "./profile-manager"
 import { ProjectsManager } from "./projects-manager"
 import { ExperiencesManager } from "./experiences-manager"
 import { CertificatesManager } from "./certificates-manager"
+import { SeedDataButton } from "./seed-button"
 import { User, FolderKanban, Briefcase, Award, Sparkles, CheckCircle2 } from "lucide-react"
 
 interface AdminDashboardProps {
@@ -94,6 +95,9 @@ export function AdminDashboard({
             </CardContent>
           </Card>
         </div>
+
+        {/* Importar / Sembrar Datos Estáticos */}
+        <SeedDataButton />
       </div>
 
       {/* Tabs Navigation */}

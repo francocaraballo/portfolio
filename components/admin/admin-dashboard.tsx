@@ -102,28 +102,28 @@ export function AdminDashboard({
 
       {/* Tabs Navigation */}
       <Tabs defaultValue="perfil" className="w-full space-y-6">
-        <TabsList className="bg-card/40 border border-border/40 p-1.5 rounded-xl w-full grid grid-cols-2 md:grid-cols-4 h-auto backdrop-blur-md">
+        <TabsList className="bg-card/40 border border-border/40 rounded-xl flex w-full overflow-x-auto scrollbar-none gap-1.5 p-1.5 h-auto backdrop-blur-md">
           <TabsTrigger
             value="perfil"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-heading text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 shadow-md shadow-primary/10 data-[state=inactive]:text-muted-foreground hover:data-[state=inactive]:text-foreground"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-heading text-xs font-bold uppercase tracking-wider py-3 px-4 rounded-lg flex items-center justify-center gap-2 shrink-0 transition-all duration-300 shadow-md shadow-primary/10 data-[state=inactive]:text-muted-foreground hover:data-[state=inactive]:text-foreground"
           >
             <User className="w-4 h-4" /> Perfil
           </TabsTrigger>
           <TabsTrigger
             value="proyectos"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-heading text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 shadow-md shadow-primary/10 data-[state=inactive]:text-muted-foreground hover:data-[state=inactive]:text-foreground"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-heading text-xs font-bold uppercase tracking-wider py-3 px-4 rounded-lg flex items-center justify-center gap-2 shrink-0 transition-all duration-300 shadow-md shadow-primary/10 data-[state=inactive]:text-muted-foreground hover:data-[state=inactive]:text-foreground"
           >
             <FolderKanban className="w-4 h-4" /> Proyectos ({projects.length})
           </TabsTrigger>
           <TabsTrigger
             value="experiencia"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-heading text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 shadow-md shadow-primary/10 data-[state=inactive]:text-muted-foreground hover:data-[state=inactive]:text-foreground"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-heading text-xs font-bold uppercase tracking-wider py-3 px-4 rounded-lg flex items-center justify-center gap-2 shrink-0 transition-all duration-300 shadow-md shadow-primary/10 data-[state=inactive]:text-muted-foreground hover:data-[state=inactive]:text-foreground"
           >
             <Briefcase className="w-4 h-4" /> Experiencia ({experiences.length})
           </TabsTrigger>
           <TabsTrigger
             value="certificados"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-heading text-xs font-bold uppercase tracking-wider py-3 rounded-lg flex items-center justify-center gap-2 transition-all duration-300 shadow-md shadow-primary/10 data-[state=inactive]:text-muted-foreground hover:data-[state=inactive]:text-foreground"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground font-heading text-xs font-bold uppercase tracking-wider py-3 px-4 rounded-lg flex items-center justify-center gap-2 shrink-0 transition-all duration-300 shadow-md shadow-primary/10 data-[state=inactive]:text-muted-foreground hover:data-[state=inactive]:text-foreground"
           >
             <Award className="w-4 h-4" /> Certificados ({certificates.length})
           </TabsTrigger>

@@ -10,20 +10,20 @@ export function HeroSection({ personalInfo }: HeroSectionProps) {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden"
+      className="relative min-h-dvh flex items-center justify-center px-6 pt-20 overflow-hidden"
     >
       {/* Ambient gradient — very subtle warm glow */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/[0.03] rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/4" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/[0.02] rounded-full blur-[100px] pointer-events-none -translate-x-1/3 translate-y-1/4" />
 
-      <div className="relative mx-auto max-w-5xl w-full flex flex-col-reverse lg:flex-row items-center gap-16 lg:gap-24">
+      <div className="relative mx-auto max-w-5xl w-full flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-24">
         {/* Text */}
         <div className="flex-1 text-center lg:text-left">
           <p className="text-primary text-xs font-medium tracking-[0.25em] uppercase mb-6 animate-fade-up">
             Hola, soy
           </p>
           <h1
-            className="font-heading text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[0.95] tracking-tight animate-fade-up"
+            className="font-heading text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-[0.95] tracking-tight animate-fade-up"
             style={{ animationDelay: "100ms" }}
           >
             {personalInfo.name}

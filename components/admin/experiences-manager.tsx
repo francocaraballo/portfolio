@@ -176,7 +176,7 @@ export function ExperiencesManager({ initialData }: ExperiencesManagerProps) {
                     variant="ghost"
                     size="sm"
                     onClick={() => openEditModal(exp)}
-                    className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-card"
+                    className="h-10 w-10 p-0 text-muted-foreground hover:text-foreground hover:bg-card"
                   >
                     <Edit2 className="w-4 h-4" />
                   </Button>
@@ -184,7 +184,7 @@ export function ExperiencesManager({ initialData }: ExperiencesManagerProps) {
                     variant="ghost"
                     size="sm"
                     onClick={() => setDeletingId(exp.id || null)}
-                    className="h-8 w-8 p-0 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                    className="h-10 w-10 p-0 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
                   >
                     <Trash2 className="w-4 h-4" />
                   </Button>
@@ -197,7 +197,7 @@ export function ExperiencesManager({ initialData }: ExperiencesManagerProps) {
 
       {/* Modal Dialog Create/Edit */}
       <Dialog open={isOpenModal} onOpenChange={setIsOpenModal}>
-        <DialogContent className="bg-card/95 border-border/40 backdrop-blur-2xl text-foreground max-w-lg">
+        <DialogContent className="bg-card/95 border-border/40 backdrop-blur-2xl text-foreground w-[95vw] sm:max-w-lg max-h-[85vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="font-heading text-lg font-bold text-foreground">
               {editingExperience ? "Editar Experiencia" : "Agregar Experiencia"}

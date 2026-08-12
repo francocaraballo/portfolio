@@ -39,7 +39,7 @@ export function CertificatesSection({ certificates }: CertificatesSectionProps) 
                       href={cert.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors duration-300"
+                      className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors duration-300 min-h-[44px] px-2 py-1"
                     >
                       Ver
                       <ExternalLink size={11} strokeWidth={1.5} />

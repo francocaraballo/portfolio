@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import type { Project } from "@/types/portfolio"
 import { ExternalLink, Github, Eye, X } from "lucide-react"
@@ -14,6 +14,13 @@ function PreviewModal({
   alt: string
   onClose: () => void
 }) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [])
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
@@ -98,7 +105,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                   </div>
 
                   {/* Action buttons */}
-                  <div className="flex items-center gap-3 md:pt-8">
+                  <div className="flex flex-wrap items-center gap-3 md:pt-8">
                     {project.preview && (
                       <button
                         onClick={() => setPreviewOpen(index)}

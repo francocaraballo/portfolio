@@ -83,7 +83,7 @@ export function Navbar({ navLinks, personalInfo }: NavbarProps) {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-foreground p-2 -mr-2"
+          className="md:hidden text-foreground flex items-center justify-center h-11 w-11 p-2 -mr-2"
           onClick={() => setIsMobileOpen(!isMobileOpen)}
           aria-label={isMobileOpen ? "Cerrar menu" : "Abrir menu"}
         >

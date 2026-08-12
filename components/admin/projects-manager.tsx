@@ -275,17 +275,17 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
                       variant="ghost"
                       size="sm"
                       onClick={() => openEditModal(project)}
-                      className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground hover:bg-card"
+                      className="h-10 w-10 p-0 text-muted-foreground hover:text-foreground hover:bg-card"
                     >
-                      <Edit2 className="w-3.5 h-3.5" />
+                      <Edit2 className="w-4 h-4" />
                     </Button>
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={() => setDeletingId(project.id || null)}
-                      className="h-8 w-8 p-0 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                      className="h-10 w-10 p-0 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
                     >
-                      <Trash2 className="w-3.5 h-3.5" />
+                      <Trash2 className="w-4 h-4" />
                     </Button>
                   </div>
                 </div>
@@ -297,7 +297,7 @@ export function ProjectsManager({ initialData }: ProjectsManagerProps) {
 
       {/* Modal Dialog for Create/Edit Project */}
       <Dialog open={isOpenModal} onOpenChange={setIsOpenModal}>
-        <DialogContent className="bg-card/95 border-border/40 backdrop-blur-2xl text-foreground max-w-xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="bg-card/95 border-border/40 backdrop-blur-2xl text-foreground w-[95vw] sm:max-w-lg max-h-[85vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="font-heading text-lg font-bold text-foreground">
               {editingProject ? "Editar Proyecto" : "Crear Nuevo Proyecto"}
